@@ -1,0 +1,22 @@
+<.header>
+  Exhibit <%= @exhibit.id %>
+  <:subtitle>This is a exhibit record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/exhibits/#{@exhibit}/edit"}>
+      <.button>Edit exhibit</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Title"><%= @exhibit.title %></:item>
+  <:item title="Description"><%= @exhibit.description %></:item>
+  <:item title="Materials"><%= @exhibit.materials %></:item>
+  <:item title="Height"><%= @exhibit.height %></:item>
+  <:item title="Width"><%= @exhibit.width %></:item>
+  <:item title="Length"><%= @exhibit.length %></:item>
+  <:item title="Created"><%= @exhibit.created %></:item>
+  <:item title="Price"><%= @exhibit.price %></:item>
+</.list>
+
+<.back navigate={~p"/exhibits"}>Back to exhibits</.back>

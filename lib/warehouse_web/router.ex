@@ -1,6 +1,7 @@
 defmodule WarehouseWeb.Router do
   use WarehouseWeb, :router
 
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -18,9 +19,12 @@ defmodule WarehouseWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    live "/auctions", AuctionLive, :index
-    live "/exhibits", ExhibitLive, :index
-    live "/exhibits/:id", ExhibitLive, :show
+    live "/auctions", Live.AuctionIndex
+    #resources "/auctions", TODO: write index pages for exhibits
+    #resources "/auctions", TODO: write index pages for artists
+    resources "/api/auctions", AuctionController
+    resources "/api/exhibits", ExhibitController
+    resources "/api/artists", ArtistController
 
   end
 

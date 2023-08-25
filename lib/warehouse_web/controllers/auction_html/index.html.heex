@@ -1,0 +1,28 @@
+<.header>
+  Listing Auctions
+  <:actions>
+    <.link href={~p"/auctions/new"}>
+      <.button>New Auction</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="auctions" rows={@auctions} row_click={&JS.navigate(~p"/auctions/#{&1}")}>
+  <:col :let={auction} label="Title"><%= auction.title %></:col>
+  <:col :let={auction} label="Description"><%= auction.description %></:col>
+  <:col :let={auction} label="Institution"><%= auction.institution %></:col>
+  <:col :let={auction} label="Location"><%= auction.location %></:col>
+  <:col :let={auction} label="Theme"><%= auction.theme %></:col>
+  <:col :let={auction} label="Duration"><%= auction.duration %></:col>
+  <:action :let={auction}>
+    <div class="sr-only">
+      <.link navigate={~p"/auctions/#{auction}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/auctions/#{auction}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={auction}>
+    <.link href={~p"/auctions/#{auction}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

@@ -1,0 +1,8 @@
+<.header>
+  New Auction
+  <:subtitle>Use this form to manage auction records in your database.</:subtitle>
+</.header>
+
+<.auction_form changeset={@changeset} action={~p"/auctions"} />
+
+<.back navigate={~p"/auctions"}>Back to auctions</.back>

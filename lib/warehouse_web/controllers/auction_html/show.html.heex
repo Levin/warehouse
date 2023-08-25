@@ -1,0 +1,20 @@
+<.header>
+  Auction <%= @auction.id %>
+  <:subtitle>This is a auction record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/auctions/#{@auction}/edit"}>
+      <.button>Edit auction</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Title"><%= @auction.title %></:item>
+  <:item title="Description"><%= @auction.description %></:item>
+  <:item title="Institution"><%= @auction.institution %></:item>
+  <:item title="Location"><%= @auction.location %></:item>
+  <:item title="Theme"><%= @auction.theme %></:item>
+  <:item title="Duration"><%= @auction.duration %></:item>
+</.list>
+
+<.back navigate={~p"/auctions"}>Back to auctions</.back>

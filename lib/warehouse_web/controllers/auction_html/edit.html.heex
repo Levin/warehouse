@@ -1,0 +1,8 @@
+<.header>
+  Edit Auction <%= @auction.id %>
+  <:subtitle>Use this form to manage auction records in your database.</:subtitle>
+</.header>
+
+<.auction_form changeset={@changeset} action={~p"/auctions/#{@auction}"} />
+
+<.back navigate={~p"/auctions"}>Back to auctions</.back>

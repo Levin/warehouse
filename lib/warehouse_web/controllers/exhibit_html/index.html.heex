@@ -1,0 +1,30 @@
+<.header>
+  Listing Exhibits
+  <:actions>
+    <.link href={~p"/exhibits/new"}>
+      <.button>New Exhibit</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="exhibits" rows={@exhibits} row_click={&JS.navigate(~p"/exhibits/#{&1}")}>
+  <:col :let={exhibit} label="Title"><%= exhibit.title %></:col>
+  <:col :let={exhibit} label="Description"><%= exhibit.description %></:col>
+  <:col :let={exhibit} label="Materials"><%= exhibit.materials %></:col>
+  <:col :let={exhibit} label="Height"><%= exhibit.height %></:col>
+  <:col :let={exhibit} label="Width"><%= exhibit.width %></:col>
+  <:col :let={exhibit} label="Length"><%= exhibit.length %></:col>
+  <:col :let={exhibit} label="Created"><%= exhibit.created %></:col>
+  <:col :let={exhibit} label="Price"><%= exhibit.price %></:col>
+  <:action :let={exhibit}>
+    <div class="sr-only">
+      <.link navigate={~p"/exhibits/#{exhibit}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/exhibits/#{exhibit}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={exhibit}>
+    <.link href={~p"/exhibits/#{exhibit}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

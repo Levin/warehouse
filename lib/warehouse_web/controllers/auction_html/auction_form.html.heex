@@ -1,0 +1,14 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:title]} type="text" label="Title" />
+  <.input field={f[:description]} type="text" label="Description" />
+  <.input field={f[:institution]} type="text" label="Institution" />
+  <.input field={f[:location]} type="text" label="Location" />
+  <.input field={f[:theme]} type="text" label="Theme" />
+  <.input field={f[:duration]} type="text" label="Duration" />
+  <:actions>
+    <.button>Save Auction</.button>
+  </:actions>
+</.simple_form>

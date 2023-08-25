@@ -24,4 +24,25 @@ defmodule Warehouse.ExhibitsFixtures do
 
     exhibit
   end
+
+  @doc """
+  Generate a exhibit.
+  """
+  def exhibit_fixture(attrs \\ %{}) do
+    {:ok, exhibit} =
+      attrs
+      |> Enum.into(%{
+        length: 120.5,
+        description: "some description",
+        title: "some title",
+        width: 120.5,
+        materials: "some materials",
+        height: 120.5,
+        created: "some created",
+        price: 120.5
+      })
+      |> Warehouse.Exhibits.create_exhibit()
+
+    exhibit
+  end
 end

@@ -1,0 +1,21 @@
+<.header>
+  Artist <%= @artist.id %>
+  <:subtitle>This is a artist record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/artists/#{@artist}/edit"}>
+      <.button>Edit artist</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @artist.name %></:item>
+  <:item title="Age"><%= @artist.age %></:item>
+  <:item title="Description"><%= @artist.description %></:item>
+  <:item title="Mail"><%= @artist.mail %></:item>
+  <:item title="Phone"><%= @artist.phone %></:item>
+  <:item title="Location"><%= @artist.location %></:item>
+  <:item title="Projects"><%= @artist.projects %></:item>
+</.list>
+
+<.back navigate={~p"/artists"}>Back to artists</.back>

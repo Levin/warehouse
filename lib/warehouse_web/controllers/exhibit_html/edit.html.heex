@@ -1,0 +1,8 @@
+<.header>
+  Edit Exhibit <%= @exhibit.id %>
+  <:subtitle>Use this form to manage exhibit records in your database.</:subtitle>
+</.header>
+
+<.exhibit_form changeset={@changeset} action={~p"/exhibits/#{@exhibit}"} />
+
+<.back navigate={~p"/exhibits"}>Back to exhibits</.back>
