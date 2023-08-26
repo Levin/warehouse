@@ -1,4 +1,4 @@
-<.header>
+<.header >
   Auction <%= @auction.id %>
   <:subtitle>This is a auction record from your database.</:subtitle>
   <:actions>
@@ -15,6 +15,16 @@
   <:item title="Location"><%= @auction.location %></:item>
   <:item title="Theme"><%= @auction.theme %></:item>
   <:item title="Duration"><%= @auction.duration %></:item>
+</.list>
+
+<div class="mb-4"></div>
+<.header>
+  Exhibit for this Auction
+</.header>
+
+<.list>
+  <:item title="Title"><%= Enum.at(@exhibits, 1) %></:item>
+  <:item title="Description"><%= Enum.at(@exhibits, 2) %></:item>
 </.list>
 
 <.back navigate={~p"/auctions"}>Back to auctions</.back>

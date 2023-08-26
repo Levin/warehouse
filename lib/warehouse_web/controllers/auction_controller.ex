@@ -3,6 +3,7 @@ defmodule WarehouseWeb.AuctionController do
 
   alias Warehouse.Auctions
   alias Warehouse.Auctions.Auction
+  alias Warehouse.AuctionItems.AuctionItem
 
   def index(conn, _params) do
     auctions = Auctions.list_auctions()
@@ -28,7 +29,8 @@ defmodule WarehouseWeb.AuctionController do
 
   def show(conn, %{"id" => id}) do
     auction = Auctions.get_auction!(id)
-    render(conn, :show, auction: auction)
+    exhibits = AuctionItem.map_auction_to_item(id)
+    render(conn, :show, auction: auction, exhibits: exhibits)
   end
 
   def edit(conn, %{"id" => id}) do
