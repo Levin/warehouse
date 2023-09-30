@@ -10,6 +10,7 @@ defmodule Warehouse.Repo.Migrations.CreateAuctions do
       add :theme, :string
       add :duration, :string
 
+
       timestamps()
     end
   end

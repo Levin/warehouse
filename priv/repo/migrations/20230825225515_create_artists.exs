@@ -11,6 +11,8 @@ defmodule Warehouse.Repo.Migrations.CreateArtists do
       add :location, :string
       add :projects, :string
 
+
+
       timestamps()
     end
   end

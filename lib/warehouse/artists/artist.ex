@@ -1,4 +1,6 @@
 defmodule Warehouse.Artists.Artist do
+  alias Warehouse.Auctions.Auction
+  alias Warehouse.Exhibits.Exhibit
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -11,6 +13,9 @@ defmodule Warehouse.Artists.Artist do
     field :phone, :string
     field :projects, :string
 
+    has_many :exhibits, Exhibit, on_replace: :mark_as_invalid
+    belongs_to :auctions, Auction, on_replace:  :mark_as_invalid
+
     timestamps()
   end
 
@@ -18,6 +23,6 @@ defmodule Warehouse.Artists.Artist do
   def changeset(artist, attrs) do
     artist
     |> cast(attrs, [:name, :age, :description, :mail, :phone, :location, :projects])
-    |> validate_required([:name, :age, :description, :mail, :phone, :location, :projects])
+    |> validate_required([:name, :age, :description])
   end
 end

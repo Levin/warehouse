@@ -4,6 +4,7 @@ defmodule Warehouse.Auctions do
   """
 
   import Ecto.Query, warn: false
+  alias Ecto.Changeset
   alias Warehouse.Repo
 
   alias Warehouse.Auctions.Auction
@@ -18,7 +19,7 @@ defmodule Warehouse.Auctions do
 
   """
   def list_auctions do
-    Repo.all(Auction)
+    Repo.all(from a in Auction, preload: [:exhibits])
   end
 
   @doc """
@@ -35,7 +36,9 @@ defmodule Warehouse.Auctions do
       ** (Ecto.NoResultsError)
 
   """
-  def get_auction!(id), do: Repo.get!(Auction, id)
+  def get_auction!(id) do
+     Repo.all(from a in Auction, where: a.id == ^id, preload: [:exhibits])
+  end
 
   @doc """
   Creates a auction.
@@ -52,6 +55,7 @@ defmodule Warehouse.Auctions do
   def create_auction(attrs \\ %{}) do
     %Auction{}
     |> Auction.changeset(attrs)
+    |> Changeset.cast_assoc(:artists)
     |> Repo.insert()
   end
 
@@ -68,8 +72,13 @@ defmodule Warehouse.Auctions do
 
   """
   def update_auction(%Auction{} = auction, attrs) do
+
+    auction = Repo.get_by(Auction, id: attrs.id)
+    |> Repo.preload(:exhibits)
+
     auction
     |> Auction.changeset(attrs)
+    |> Changeset.cast_assoc(:exhibits)
     |> Repo.update()
   end
 
@@ -85,8 +94,9 @@ defmodule Warehouse.Auctions do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_auction(%Auction{} = auction) do
-    Repo.delete(auction)
+  def delete_auction(auction_id) do
+    from(a in Auction, where: a.id == ^auction_id)
+    |> Repo.delete_all()
   end
 
   @doc """

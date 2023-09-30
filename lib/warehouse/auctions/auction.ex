@@ -1,4 +1,6 @@
 defmodule Warehouse.Auctions.Auction do
+  alias Warehouse.Artists.Artist
+  alias Warehouse.Exhibits.Exhibit
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -10,6 +12,9 @@ defmodule Warehouse.Auctions.Auction do
     field :theme, :string
     field :duration, :string
 
+    has_many :exhibits, Exhibit, on_replace: :nilify
+    has_many :artists, Artist, on_replace: :nilify
+
     timestamps()
   end
 
@@ -17,6 +22,6 @@ defmodule Warehouse.Auctions.Auction do
   def changeset(auction, attrs) do
     auction
     |> cast(attrs, [:title, :description, :institution, :location, :theme, :duration])
-    |> validate_required([:title, :description, :institution, :location, :theme, :duration])
+    |> validate_required([:title, :description])
   end
 end
