@@ -12,8 +12,8 @@ defmodule Warehouse.Auctions.Auction do
     field :theme, :string
     field :duration, :string
 
-    has_many :exhibits, Exhibit, on_replace: :nilify
-    has_many :artists, Artist, on_replace: :nilify
+    #has_many :exhibits, Exhibit, on_replace: :nilify
+    #has_many :artists, Artist, on_replace: :nilify
 
     timestamps()
   end

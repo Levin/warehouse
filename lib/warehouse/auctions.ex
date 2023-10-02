@@ -19,7 +19,7 @@ defmodule Warehouse.Auctions do
 
   """
   def list_auctions do
-    Repo.all(from a in Auction, preload: [:exhibits])
+    Repo.all(from a in Auction)
   end
 
   @doc """

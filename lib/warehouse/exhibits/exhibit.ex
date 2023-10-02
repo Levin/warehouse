@@ -15,7 +15,7 @@ defmodule Warehouse.Exhibits.Exhibit do
     field :price, :float
   
 
-    belongs_to :artists, Artist, on_replace: :nilify
+    #belongs_to :artists, Artist, on_replace: :nilify
 
 
     timestamps()

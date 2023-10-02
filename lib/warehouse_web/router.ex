@@ -20,6 +20,7 @@ defmodule WarehouseWeb.Router do
 
     get "/", PageController, :home
     live "/auctions", Live.AuctionIndex
+    
     #resources "/auctions", TODO: write index pages for exhibits
     #resources "/auctions", TODO: write index pages for artists
     resources "/api/auctions", AuctionController

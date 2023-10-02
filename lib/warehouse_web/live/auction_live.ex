@@ -19,17 +19,7 @@ defmodule WarehouseWeb.AuctionLive do
       <.button>New Auction</.button>
     </div>
 
-    <%= for auction <- 0..1 do %>
-      <div class="">
-        <h1><%= Enum.at(@auctions, auction).title  %></h1>
-        <p><%= Enum.at(@auctions, auction).description  %></p>
-        <p><%= Enum.at(@auctions, auction).location  %></p>
-        <hr>
-      </div>
-
        
-    <% end %>
-
 
     """
   end
