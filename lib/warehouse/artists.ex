@@ -4,6 +4,7 @@ defmodule Warehouse.Artists do
   """
 
   import Ecto.Query, warn: false
+  alias Ecto.Changeset
   alias Warehouse.Repo
 
   alias Warehouse.Artists.Artist
@@ -18,7 +19,7 @@ defmodule Warehouse.Artists do
 
   """
   def list_artists do
-    Repo.all(Artist)
+    Repo.all(from a in Artist, preload: [:exhibits])
   end
 
   @doc """
@@ -35,7 +36,9 @@ defmodule Warehouse.Artists do
       ** (Ecto.NoResultsError)
 
   """
-  def get_artist!(id), do: Repo.get!(Artist, id)
+  def get_artist!(id) do
+    Repo.all(from a in Artist, where: a.id == ^id, preload: [:exhibits])
+  end 
 
   @doc """
   Creates a artist.
@@ -52,6 +55,7 @@ defmodule Warehouse.Artists do
   def create_artist(attrs \\ %{}) do
     %Artist{}
     |> Artist.changeset(attrs)
+    |> Changeset.cast_assoc(:exhibits)
     |> Repo.insert()
   end
 

@@ -11,6 +11,7 @@ defmodule Warehouse.Repo.Migrations.CreateExhibits do
       add :length, :float
       add :created, :string
       add :price, :float
+      add :artist_id, references(:artists, type: :integer, on_delete: :delete_all), null: true
 
       timestamps()
     end

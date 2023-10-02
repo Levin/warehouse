@@ -1,6 +1,5 @@
 defmodule Warehouse.Exhibits.Exhibit do
   alias Warehouse.Artists.Artist
-  alias Warehouse.Auctions.Auction
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -15,7 +14,7 @@ defmodule Warehouse.Exhibits.Exhibit do
     field :price, :float
   
 
-    #belongs_to :artists, Artist, on_replace: :nilify
+    belongs_to :artists, Artist, on_replace: :nilify
 
 
     timestamps()

@@ -1,5 +1,4 @@
 defmodule Warehouse.Artists.Artist do
-  alias Warehouse.Auctions.Auction
   alias Warehouse.Exhibits.Exhibit
   use Ecto.Schema
   import Ecto.Changeset
@@ -14,7 +13,6 @@ defmodule Warehouse.Artists.Artist do
     field :projects, :string
 
     has_many :exhibits, Exhibit, on_replace: :mark_as_invalid
-    belongs_to :auctions, Auction, on_replace:  :mark_as_invalid
 
     timestamps()
   end
